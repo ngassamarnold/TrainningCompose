@@ -12,11 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.trainning.dto.Lemon
 
 @Composable
 fun LemonTextAndImage(
-    title:String,
-    image:Int,
+    lemon:Lemon,
     onImageClick: ()->Unit,
     modifier: Modifier = Modifier
 ){
@@ -25,12 +25,12 @@ fun LemonTextAndImage(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text=title,
+            text=lemon.title,
             fontSize = 18.sp,
             modifier = Modifier.padding(16.dp)
         )
         Image(
-            painter = painterResource(image),
+            painter = painterResource(lemon.image),
             contentDescription = null,
             modifier = Modifier
                 .border(2.dp, color = Color(105, 205, 216), shape = RoundedCornerShape(5))

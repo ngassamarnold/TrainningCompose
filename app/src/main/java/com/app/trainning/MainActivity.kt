@@ -24,7 +24,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.app.trainning.dto.Lemon
 import com.app.trainning.ui.theme.TestComposeTheme
+import java.util.Objects
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,30 +55,30 @@ fun LemonadeApp(){
 
 @Composable
 fun initLemonApp(modifier:Modifier= Modifier){
-
-    var image: Int
-    var text: String
     var numberRadom= 0
-
+    var lemon=Lemon()
     var step by remember { mutableStateOf(1) }
-    image = when(step){
+    lemon = when(step){
         1-> {
-            text = stringResource(R.string.tap_lemon)
-            R.drawable.lemon_tree
+            lemon.title=stringResource(R.string.tap_lemon)
+            lemon.image= R.drawable.lemon_tree
+            lemon
         }
         2-> {
             if(numberRadom==0) numberRadom = (2..4).random()
-            println(numberRadom)
-            text = stringResource(R.string.keep_tapping)
-            R.drawable.lemon_squeeze
+            lemon.title=stringResource(R.string.keep_tapping)
+            lemon.image= R.drawable.lemon_squeeze
+            lemon
         }
         3-> {
-            text = stringResource(R.string.lemonade_to_drink)
-            R.drawable.lemon_drink
+            lemon.title=stringResource(R.string.lemonade_to_drink)
+            lemon.image= R.drawable.lemon_drink
+            lemon
         }
         else -> {
-            text = stringResource(R.string.start_again)
-            R.drawable.lemon_restart
+            lemon.title=stringResource(R.string.start_again)
+            lemon.image= R.drawable.lemon_restart
+            lemon
         }
     }
 
@@ -92,7 +94,7 @@ fun initLemonApp(modifier:Modifier= Modifier){
             else-> step=1
          }
     }
-    LemonTextAndImage(title = text,image=image,modifier=modifier,onImageClick=imageClick)
+    LemonTextAndImage(lemon,modifier=modifier,onImageClick=imageClick)
 }
 
 @Preview(showBackground = true, showSystemUi = true)
