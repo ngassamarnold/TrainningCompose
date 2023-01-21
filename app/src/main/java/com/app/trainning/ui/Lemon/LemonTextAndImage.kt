@@ -33,7 +33,8 @@ fun LemonTextAndImage(
             painter = painterResource(lemon.image),
             contentDescription = null,
             modifier = Modifier
-                .border(2.dp, color = Color(105, 205, 216), shape = RoundedCornerShape(5))
+                .border(2.dp,
+                    color = Color(105, 205, 216), shape = RoundedCornerShape(5))
                 .padding(15.dp)
                 .clickable { onImageClick() }
         )
